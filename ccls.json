@@ -1,0 +1,25 @@
+{
+  "$schema": "https://raw.githubusercontent.com/lukesampson/scoop/master/schema.json",
+  "version": "0.20190823.5",
+  "url": "https://github.com/MaskRay/ccls/archive/0.20190823.5.zip",
+  "extract_to": "",
+  "depends": [
+    "cmake",
+    "llvm-self-build",
+    "ninja"
+  ],
+  "installer": {
+    "script": [
+      "cmake -H \"$dir\\\" -BRelease -G Ninja -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_COMPILER=clang-cl -DCMAKE_PREFIX_PATH=\"$scoopdir/apps/llvm-self-build/current/Release;$scoopdir/apps/llvm-self-build/current/Release/tools/clang;$scoopdir/apps/llvm-self-build/current;$scoopdir/apps/llvm-self-build/current/tools/clang;$globaldir/apps/llvm-self-build/current/Release;$globaldir/apps/llvm-self-build/current/Release/tools/clang;$globaldir/apps/llvm-self-build/current;$globaldir/apps/llvm-self-build/current/tools/clang\"",
+      "ninja -C \"$dir\""
+    ]
+  },
+
+  "bin": "bin\\ccls",
+  "checkver": {
+    "github": "https://github.com/MaskRay/ccls"
+  },
+  "autoupdate": {
+    "url": "https://github.com/MaskRay/ccls/archive/$version.zip"
+  }
+}
